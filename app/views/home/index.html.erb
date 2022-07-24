@@ -1,2 +1,15 @@
 <% provide(:title, "Home") %>
-<p>Find me in app/views/home/index.html.erb</p>
+<p style="color: green"><%= notice %></p>
+
+<h1>Static pages</h1>
+
+<div id="static_pages">
+  <% @static_pages.each do |static_page| %>
+    <%= render static_page %>
+    <p>
+      <%= link_to "Show this static page", static_page %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New static page", new_static_page_path %>

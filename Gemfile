@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem "active_type"
 gem "bcrypt"
 gem "bootsnap", require: false
@@ -17,6 +18,8 @@ gem "stimulus-rails"
 gem "turbo-rails"
 gem 'simple_form'
 gem 'bootstrap', '~> 5.2'
+gem "figaro"
+gem 'flickr', '~> 2.1'
 
 group :production do
   gem "postmark-rails"

@@ -34,3 +34,6 @@
 /.env.development
 /.env.*local
 node_modules
+# Ignore application configuration
+/config/application.yml
+.env

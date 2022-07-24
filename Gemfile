@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
-gem 'dotenv-rails', groups: [:development, :test]
 gem "active_type"
 gem "bcrypt"
 gem "bootsnap", require: false
@@ -20,6 +19,9 @@ gem 'simple_form'
 gem 'bootstrap', '~> 5.2'
 gem "figaro"
 gem 'flickr', '~> 2.1'
+gem 'jquery-rails', '~> 4.5'
+gem 'json', '~> 2.6', '>= 2.6.2'
+gem 'rest-client', '~> 2.1'
 
 group :production do
   gem "postmark-rails"
@@ -41,7 +43,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "byebug"
+  gem 'pry-byebug', '~> 3.9'
   gem "dotenv-rails"
   gem "launchy"
 end

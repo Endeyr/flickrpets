@@ -53,6 +53,6 @@ class StaticPagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def static_page_params
-      params.require(:static_page).permit()
+      params.require(:static_page).permit(:user_id)
     end
 end

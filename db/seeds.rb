@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# BASE_URL/?method&api_key&user_id&format
+# ENV['FLICKR_API_KEY']
+
+response = RestClient.get('https://www.flickr.com/services/rest/?method=flickr.test.echo&name=value')
+
+flickr_array = JSON.parse(response)
+
+puts "data loaded success"
+binding.pry

@@ -4,7 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :id, label 'What is your Flickr Id?' %>
+    <%= f.input :user_id, label: 'What is your Flickr Id?' %>
   </div>
 
   <div class="form-actions">

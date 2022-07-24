@@ -15,6 +15,8 @@ gem "rails", "~> 7.0.3"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
+gem 'simple_form'
+gem 'bootstrap', '~> 5.2'
 
 group :production do
   gem "postmark-rails"

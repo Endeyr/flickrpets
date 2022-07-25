@@ -5,5 +5,9 @@ response = RestClient.get('https://www.flickr.com/services/rest/?method=flickr.t
 
 flickr_array = JSON.parse(response)
 
+flickr_array.each do |photo|
+  binding.pry
+  # Cat.create(name: photo["name"])
+end
+
 puts "data loaded success"
-binding.pry

@@ -1,13 +1,26 @@
 class StaticPagesController < ApplicationController
+  require 'flickr'
   before_action :set_static_page, only: %i[ show edit update destroy ]
 
   # GET /static_pages
   def index
-    @static_pages = StaticPage.all
+    begin
+      flickr = Flickr.new
+      unless params[:user_id].blank?
+        @photos = flickr.photos.search(user_id: params[:user_id])
+      else
+        @photos = flickr.photos.getRecent
+      end
+    rescue StandardError => e
+      flash[:alert] = "#{e.class}: #{e.message}. Please try again..."
+      redirect_to root_path
+    end
   end
 
   # GET /static_pages/1
   def show
+    @static_page = StaticPage.find(params[:id])
+
   end
 
   # GET /static_pages/new
@@ -22,6 +35,9 @@ class StaticPagesController < ApplicationController
   # POST /static_pages
   def create
     @static_page = StaticPage.new(static_page_params)
+
+    hash = Auth.new
+    @static_page.image = hash.get_photos_by_user_id(@static_page.id)
 
     if @static_page.save
       redirect_to @static_page, notice: "Static page was successfully created."
@@ -53,6 +69,6 @@ class StaticPagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def static_page_params
-      params.require(:static_page).permit(:user_id)
+      params.require(:static_page).permit(:user_id, :id)
     end
 end

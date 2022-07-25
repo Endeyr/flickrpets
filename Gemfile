@@ -22,6 +22,7 @@ gem 'flickr', '~> 2.1'
 gem 'jquery-rails', '~> 4.5'
 gem 'json', '~> 2.6', '>= 2.6.2'
 gem 'rest-client', '~> 2.1'
+gem "http"
 
 group :production do
   gem "postmark-rails"

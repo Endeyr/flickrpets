@@ -1,15 +1,28 @@
 <% provide(:title, "Home") %>
-<p style="color: green"><%= notice %></p>
-
-<h1>Static pages</h1>
-
-<div id="static_pages">
-  <% @static_pages.each do |static_page| %>
-    <%= render static_page %>
-    <p>
-      <%= link_to "Show this static page", static_page %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New static page", new_static_page_path %>
+<% if params[:user_id].nil? %>
+  <div class="jumbotron min-vh-100 text-center m-0 d-flex flex-column justify-content-center">
+    <div class="d-flex align-items-center flex-column">
+      <%= render 'form' %>
+    </div>
+  </div>
+<% else %>
+  <div class="jumbotron text-center">
+    <div class="d-flex align-items-center flex-column">
+      <%= render 'form' %>
+    </div>
+    <% if params[:user_id].empty? %>
+      <div>Flickr API Searcher is displaying latest public photos uploaded to Flickr</div>
+    <% else %>
+      <div>Flickr API Searcher is displaying public photos uploaded by <%= params[:user_id] %> </div>
+    <% end %>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-md-center">
+    <% @photos.each do |photo| %>
+      <div class="col-md-auto">
+        <img src="<%= Flickr.url_n(photo) %>"/>
+      </div>
+    <% end %>
+    </div>
+  </div>
+<% end %>
